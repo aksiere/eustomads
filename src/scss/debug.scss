@@ -1,18 +1,40 @@
-:is(.flex, .grid) {
-	&[data-debug] > div {
-		display: grid;
-		place-items: center;
-		border: 1px dashed var(--background-90);
-		border-radius: 8px;
-		padding: 4px;
-		counter-increment: section;
+// :is(.flex, .grid) {
+// 	&[data-debug] > div:not(.ignore) {
+// 		display: grid;
+// 		place-items: center;
+// 		border: 1px dashed var(--background-90);
+// 		border-radius: 8px;
+// 		padding: 4px;
+// 		counter-increment: section;
 	
-		&::before {
-			content: "(" counter(section) ")";
-		}
+// 		&::before {
+// 			content: "(" counter(section) ")";
+// 		}
 	
-		&[class]::before {
-			content: "(" counter(section) ") " attr(class);
+// 		&[class]::before {
+// 			content: "(" counter(section) ") " attr(class);
+// 		}
+// 	}
+// }
+
+.flex {
+	&[data-debug] > div:not(.ignore) {
+		@each $breakpoint-prefix, $breakpoint-value in $breakpoints {
+			@media (min-width: $breakpoint-value) {
+				@for $c1 from 1 through $columns {
+					@for $c2 from 1 through $columns {
+						@if $c1 <= $c2 {
+							&[class~="#{$breakpoint-prefix}#{$c1}/#{$c2}"] {
+								&::after {
+									content: ".#{$c1}/#{$c2}";
+									font-size: 2rem;
+									font-weight: 500;
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 }
