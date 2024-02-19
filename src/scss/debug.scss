@@ -25,11 +25,56 @@
 					@for $c2 from 1 through $columns {
 						@if $c1 <= $c2 {
 							&[class~="#{$breakpoint-prefix}#{$c1}/#{$c2}"] {
-								&::after {
+								&::before {
 									content: ".#{$c1}/#{$c2}";
 									font-size: 2rem;
 									font-weight: 500;
 								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.grid {
+	@each $breakpoint-prefix, $breakpoint-value in $breakpoints {
+		@media (min-width: $breakpoint-value) {
+			@for $c1 from 1 through $columns {
+				@for $c2 from 1 through $columns {
+					&[class~="#{$breakpoint-prefix}#{$c1}x#{$c2}"] {
+						grid-template-rows: repeat(#{$c1}, 1fr);
+						grid-template-columns: repeat(#{$c2}, 1fr);
+					}
+
+					& > div {
+						&[class~="#{$breakpoint-prefix}#{$c1}x#{$c2}"] {
+							grid-row-end: span #{$c1};
+							grid-column-end: span #{$c2};
+						}
+
+						&[class~="#{$breakpoint-prefix}@#{$c1},#{$c2}"] {
+							grid-row-start: #{$c1};
+							grid-column-start: #{$c2};
+						}
+					}
+
+					&[data-debug] > div:not(.ignore) {
+						&[class~="#{$breakpoint-prefix}#{$c1}x#{$c2}"] {
+							&::before {
+								content: ".#{$c1}/#{$c2}";
+								font-size: 2rem;
+								font-weight: 500;
+							}
+						}
+
+						&[class~="#{$breakpoint-prefix}@#{$c1},#{$c2}"] {
+							&::after {
+								content: ".@#{$c1},#{$c2}";
+								font-size: 2rem;
+								font-weight: 500;
 							}
 						}
 					}

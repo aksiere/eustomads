@@ -90,7 +90,6 @@
 <div class='flex p-4 100dvh'>
 	<div class='1/1 ignore d-flex column'>
 		<h1><span class='muted'>01</span> Flex</h1>
-		<h1><span class='muted'>02</span> Grid</h1>
 		<h6 class='muted mt-a'>Eustoma Design System</h6>
 	</div>
 </div>
@@ -119,19 +118,38 @@
 		<h5 class='muted'>Flex</h5>
 		<h1>Intuitive syntax.</h1>
 	</div>
-	<div class='1/3 lg:2/12'></div>
-	<div class='1/3 lg:1/3'></div>
-	<div class='1/3 lg:4/8'></div>
+	<div class='1/1 lg:2/12'></div>
+	<div class='1/1 lg:1/3'></div>
+	<div class='1/1 lg:4/8'></div>
 </div>
 
-<div class='flex p-4 100dvh' data-debug>
-	<div class='1/1 ignore'>
-		<h5 class='muted'>Flex</h5>
-		<h1>Huge customization.</h1>
+<div class='flex p-4 100dvh'>
+	<div class='1/1 ignore d-flex column'>
+		<h1><span class='muted'>02</span> Grid</h1>
+		<h6 class='muted mt-a'>Eustoma Design System</h6>
 	</div>
-	<div class='1/3 lg:2/12'></div>
-	<div class='1/3 lg:1/3'></div>
-	<div class='1/3 lg:4/8'></div>
+</div>
+
+<div class='grid 2x6 p-4 100dvh' data-debug>
+	<div class='1x6 ignore'>
+		<h5 class='muted'>Grid</h5>
+		<h1>A brand new system.</h1>
+	</div>
+	<div class='1x2'></div>
+	<div class='1x2'></div>
+	<div class='1x2'></div>
+</div>
+
+<div class='grid 8x8 p-4 100dvh' data-debug>
+	<div class='4x8 ignore'>
+		<h5 class='muted'>Grid</h5>
+		<h1>Immersive flexibility.</h1>
+	</div>
+	<div class='1x3'></div>
+	<div class='2x4 @5,5'></div>
+	<div class='1x2'></div>
+	<div class='1x5 @7,2'></div>
+	<div class='1x6 @8,3'></div>
 </div>
 
 <style>
@@ -148,10 +166,12 @@
 		}
 	}
 
-	.flex {
+	:is(.flex, .grid) {
 		div:not(.ignore) {
-			display: grid;
-			place-items: center;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 1rem;
 			border-radius: 10px;
 			background: #aaa;
 			color: #777;
