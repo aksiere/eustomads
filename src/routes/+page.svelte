@@ -145,11 +145,11 @@
 		<h5 class='muted'>Grid</h5>
 		<h1>Immersive flexibility.</h1>
 	</div>
-	<div class='1x3'></div>
-	<div class='2x4 @5,5'></div>
-	<div class='1x2'></div>
-	<div class='1x5 @7,2'></div>
-	<div class='1x6 @8,3'></div>
+	<div class='1x4 lg:1x3'></div>
+	<div class='1x4 lg:2x4 lg:@5,5'></div>
+	<div class='1x8 lg:1x2'></div>
+	<div class='1x8 lg:1x5 lg:@7,2'></div>
+	<div class='1x8 lg:1x6 lg:@8,3'></div>
 </div>
 
 <style>
