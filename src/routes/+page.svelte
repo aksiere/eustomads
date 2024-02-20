@@ -2,7 +2,7 @@
 	import { swipe } from 'svelte-gestures'
 	import { onMount } from 'svelte'
 
-	let debug = $state.frozen(true)
+	let debug = $state.frozen(false)
 	let swipeOptions = $state.frozen({ timeframe: 300, minSwipeDistance: 100, touchAction: 'pan-y' })
 	
 	let innerHeight = $state(0)
@@ -32,13 +32,6 @@
 	const onwheel = (event) => handler(event.deltaY > 0)
 	const onswipe = (event) => handler(event.detail.direction === 'top', true)
 
-	const onscroll = () => {
-		console.log(/iP(hone|od|ad)/.test(getUAString()))
-		if (/iP(hone|od|ad)/.test(getUAString())) {
-			isScrolling = false
-		}
-	}
-
 	const onscrollend = () => {
 		if (debug) console.log('isScrolling: false')
 		isScrolling = false
@@ -55,33 +48,15 @@
 			if (debug) console.log('isScrolling: true')
 			if (!isTouchable) isScrolling = true
 
-			scrollTo(((currentPage - 1) + 1 * modifier) * innerHeight, () => {
-				isScrolling = false
-				update()
+			scrollTo({
+				top: ((currentPage - 1) + 1 * modifier) * innerHeight,
+				behavior: 'smooth'
 			})
 		}
 	}
-
-	// https://stackoverflow.com/questions/52292603/is-there-a-callback-for-window-scrollto
-	function scrollTo(offset, callback) {
-		const fixedOffset = offset.toFixed()
-		const onScroll = function () {
-			if (window.scrollY.toFixed() === fixedOffset) {
-				window.removeEventListener('scroll', onScroll)
-				callback()
-			}
-		}
-
-		window.addEventListener('scroll', onScroll)
-		onScroll()
-		window.scrollTo({
-			top: offset,
-			behavior: 'smooth'
-		})
-	}
 </script>
 
-<svelte:window {onwheel} onresize={update} {onscrollend} {onscroll} />
+<svelte:window {onwheel} onresize={update} {onscrollend} />
 
 <div class='debug' class:hidden={!debug}>
 	innerHeight: {innerHeight}<br>
