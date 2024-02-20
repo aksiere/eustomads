@@ -35,8 +35,8 @@
 
 	const onscrollend = () => {
 		if (debug) console.log('isScrolling: false')
-		// isScrolling = false
-		// update()
+		isScrolling = false
+		update()
 	}
 
 	const handler = (modifierCondition) => {
@@ -75,7 +75,7 @@
 	}
 </script>
 
-<svelte:window {onwheel} onresize={update} />
+<svelte:window {onwheel} onresize={update} {onscrollend} />
 
 <div class='debug' class:hidden={!debug}>
 	innerHeight: {innerHeight}<br>
