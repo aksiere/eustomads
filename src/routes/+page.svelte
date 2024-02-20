@@ -30,7 +30,7 @@
 	let isScrolling = $state(false)
 
 	const onwheel = (event) => handler(event.deltaY > 0)
-	const onswipe = (event) => handler(event.detail.direction === 'top')
+	const onswipe = (event) => handler(event.detail.direction === 'top', true)
 
 	const onscroll = () => {
 		console.log(/iP(hone|od|ad)/.test(getUAString()))
@@ -45,7 +45,7 @@
 		update()
 	}
 
-	const handler = (modifierCondition) => {
+	const handler = (modifierCondition, isTouchable) => {
 		const modifier = modifierCondition ? 1 : -1
 
 		if (modifier === -1 && window.scrollY === 0) return
@@ -53,7 +53,7 @@
 
 		if (!isScrolling) {
 			if (debug) console.log('isScrolling: true')
-			isScrolling = true
+			if (!isTouchable) isScrolling = true
 
 			scrollTo(((currentPage - 1) + 1 * modifier) * innerHeight, () => {
 				isScrolling = false
@@ -78,14 +78,6 @@
 			top: offset,
 			behavior: 'smooth'
 		})
-	}
-
-	function getUAString() {
-		let uaData = navigator.userAgentData
-		if (null !== uaData && uaData.brands) {
-			return uaData.brands.map(item => item.brand + '/' + item.version).join(' ')
-		}
-		return navigator.userAgent
 	}
 </script>
 
