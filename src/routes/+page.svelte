@@ -46,12 +46,9 @@
 			if (debug) console.log('isScrolling: true')
 			isScrolling = true
 
-			// scrollTo({
-			// 	top: ((currentPage - 1) + 1 * modifier) * innerHeight, 
-			// 	behavior: 'smooth'
-			// })
 			scrollTo(((currentPage - 1) + 1 * modifier) * innerHeight, () => {
 				isScrolling = false
+				update()
 			})
 		}
 	}
@@ -75,7 +72,7 @@
 	}
 </script>
 
-<svelte:window {onwheel} {onscrollend} onresize={update} onscroll={update} />
+<svelte:window {onwheel} onresize={update} />
 
 <div class='debug' class:hidden={!debug}>
 	innerHeight: {innerHeight}<br>
