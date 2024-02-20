@@ -13,11 +13,8 @@
 
 	onMount(() => {
 		window.addEventListener('wheel', e => e.preventDefault(), { passive: false })
-		window.addEventListener('scroll', e => e.preventDefault(), { passive: false })
 		window.addEventListener('pointermove', e => e.preventDefault(), { passive: false })
-		window.addEventListener('pointerdown', e => e.preventDefault(), { passive: false })
 		window.addEventListener('touchmove', e => e.preventDefault(), { passive: false })
-		window.addEventListener('touchstart', e => e.preventDefault(), { passive: false })
 		update()
 	})
 
@@ -33,57 +30,24 @@
 	const onwheel = (event) => handler(event.deltaY > 0)
 	const onswipe = (event) => handler(event.detail.direction === 'top')
 
-	const onscrollend = () => {
-		if (debug) console.log('isScrolling: false')
-		isScrolling = false
-		update()
-	}
-
 	const handler = (modifierCondition) => {
 		const modifier = modifierCondition ? 1 : -1
 
 		if (modifier === -1 && window.scrollY === 0) return
 		if (modifier === 1 && currentPage === maxPage) return
 
-		if (!isScrolling) {
-			if (debug) console.log('isScrolling: true')
-			isScrolling = true
-
-			scrollTo(((currentPage - 1) + 1 * modifier) * innerHeight, () => {
-				isScrolling = false
-				update()
-			})
-		}
-	}
-
-	// https://stackoverflow.com/questions/52292603/is-there-a-callback-for-window-scrollto
-	function scrollTo(offset, callback) {
-		const fixedOffset = offset.toFixed()
-		const onScroll = function () {
-			if (window.scrollY.toFixed() === fixedOffset) {
-				window.removeEventListener('scroll', onScroll)
-				callback()
-			}
-		}
-
-		window.addEventListener('scroll', onScroll)
-		onScroll()
-		window.scrollTo({
-			top: offset,
-			behavior: 'smooth'
-		})
+		scrollTo(((currentPage - 1) + 1 * modifier) * innerHeight, update)
 	}
 </script>
 
-<svelte:window {onwheel} onresize={update} {onscrollend} onpointerup={() => isScrolling = false} />
+<svelte:window {onwheel} onresize={update} onscrollend={update} />
 
 <div class='debug' class:hidden={!debug}>
 	innerHeight: {innerHeight}<br>
 	scrollY: {scrollY}<br>
 	scrollHeight: {scrollHeight}<br>
 	maxPage: {Math.round(scrollHeight / innerHeight)}<br>
-	currentPage: {Math.round(scrollY / innerHeight) + 1}<br>
-	isScrolling: {isScrolling}
+	currentPage: {Math.round(scrollY / innerHeight) + 1}
 </div>
 
 <div use:swipe={swipeOptions} {onswipe}>
