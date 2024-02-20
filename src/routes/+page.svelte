@@ -2,7 +2,7 @@
 	import { swipe } from 'svelte-gestures'
 	import { onMount } from 'svelte'
 
-	let debug = $state.frozen(false)
+	let debug = $state.frozen(true)
 	let swipeOptions = $state.frozen({ timeframe: 300, minSwipeDistance: 100, touchAction: 'pan-y' })
 	
 	let innerHeight = $state(0)
@@ -13,6 +13,7 @@
 
 	onMount(() => {
 		window.addEventListener('wheel', e => e.preventDefault(), { passive: false })
+		window.addEventListener('scroll', e => e.preventDefault(), { passive: false })
 		window.addEventListener('pointermove', e => e.preventDefault(), { passive: false })
 		window.addEventListener('pointerdown', e => e.preventDefault(), { passive: false })
 		window.addEventListener('touchmove', e => e.preventDefault(), { passive: false })
@@ -163,8 +164,8 @@
 			justify-content: center;
 			gap: 1rem;
 			border-radius: 10px;
-			background: #aaa;
-			color: #777;
+			background: var(--accent);
+			color: color-mix(in oklab, var(--accent) 80%, black);
 			user-select: none;
 			-webkit-user-select: none;
 		}
