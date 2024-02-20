@@ -30,8 +30,8 @@
 
 	let isScrolling = $state(false)
 
-	const onwheel = (event) => handler(event.deltaY > 0)
-	const onswipe = (event) => handler(event.detail.direction === 'top', true)
+	const onwheel = (event) => handler(event.deltaY > 0 ? 1 : -1)
+	const onswipe = (event) => handler(event.detail.direction === 'top' ? 1 : event.detail.direction === 'bottom' ? -1 : null , true)
 
 	const onscrollend = () => {
 		if (debug) console.log('isScrolling: false')
@@ -39,9 +39,7 @@
 		update()
 	}
 
-	const handler = (modifierCondition, isTouchable) => {
-		const modifier = modifierCondition ? 1 : -1
-
+	const handler = (modifier, isTouchable) => {
 		if (modifier === -1 && window.scrollY === 0) return
 		if (modifier === 1 && currentPage === maxPage) return
 
@@ -71,8 +69,8 @@
 <div use:swipe={swipeOptions} {onswipe}>
 	<div class='flex p-4 100dvh'>
 		<div class='1/1 md:2/5 ignore'>
-			<h1 class='weight-600'>Eustoma</h1>
-			<h4 class='muted weight-500'>Lightweight flexible grid system</h4>
+			<h1>Eustoma</h1>
+			<h4 class='muted mt-3'>Lightweight flexible grid system</h4>
 		</div>
 		<div class='1/1 md:3/5'></div>
 	</div>
@@ -83,34 +81,49 @@
 			<h6 class='muted mt-a'>Eustoma Design System</h6>
 		</div>
 	</div>
-	
-	<div class='flex p-4 100dvh'>
+
+	<div class='grid 2x1 p-4 100dvh' data-debug>
 		<div class='1/1 ignore'>
-			<h5 class='muted'>Flex</h5>
+			<h5 class='muted mb-2'>Flex</h5>
 			<h1>Familiar system.</h1>
 		</div>
-		<div class='1/4 md:1/6 xl:1/12'></div>
-		<div class='1/4 md:1/6 xl:1/12'></div>
-		<div class='1/4 md:1/6 xl:1/12'></div>
-		<div class='1/4 md:1/6 xl:1/12'></div>
-		<div class='1/4 md:1/6 xl:1/12'></div>
-		<div class='1/4 md:1/6 xl:1/12'></div>
-		<div class='1/4 md:1/6 xl:1/12'></div>
-		<div class='1/4 md:1/6 xl:1/12'></div>
-		<div class='1/4 md:1/6 xl:1/12'></div>
-		<div class='1/4 md:1/6 xl:1/12'></div>
-		<div class='1/4 md:1/6 xl:1/12'></div>
-		<div class='1/4 md:1/6 xl:1/12'></div>
+		<div class='1x1 flex ignore' data-debug>
+			<div></div>
+			<div></div>
+		</div>
 	</div>
-	
-	<div class='flex p-4 100dvh' data-debug>
+
+	<div class='grid 2x1 p-4 100dvh' data-debug>
 		<div class='1/1 ignore'>
-			<h5 class='muted'>Flex</h5>
+			<h5 class='muted mb-2'>Flex</h5>
 			<h1>Intuitive syntax.</h1>
 		</div>
-		<div class='1/1 lg:2/12'></div>
-		<div class='1/1 lg:1/3'></div>
-		<div class='1/1 lg:4/8'></div>
+		<div class='1x1 flex ignore' data-debug>
+			<div class='1/1 lg:2/12'></div>
+			<div class='1/1 lg:1/3'></div>
+			<div class='1/1 lg:4/8'></div>
+		</div>
+	</div>
+
+	<div class='grid 2x1 p-4 100dvh' data-debug>
+		<div class='1/1 ignore'>
+			<h5 class='muted mb-2'>Flex</h5>
+			<h1>Sufficient customization.</h1>
+		</div>
+		<div class='1x1 flex ignore' data-debug>
+			<div class='1/4 md:1/6 xl:1/12'></div>
+			<div class='1/4 md:1/6 xl:1/12'></div>
+			<div class='1/4 md:1/6 xl:1/12'></div>
+			<div class='1/4 md:1/6 xl:1/12'></div>
+			<div class='1/4 md:1/6 xl:1/12'></div>
+			<div class='1/4 md:1/6 xl:1/12'></div>
+			<div class='1/4 md:1/6 xl:1/12'></div>
+			<div class='1/4 md:1/6 xl:1/12'></div>
+			<div class='1/4 md:1/6 xl:1/12'></div>
+			<div class='1/4 md:1/6 xl:1/12'></div>
+			<div class='1/4 md:1/6 xl:1/12'></div>
+			<div class='1/4 md:1/6 xl:1/12'></div>
+		</div>
 	</div>
 	
 	<div class='flex p-4 100dvh'>
@@ -120,26 +133,44 @@
 		</div>
 	</div>
 	
-	<div class='grid 2x6 p-4 100dvh' data-debug>
-		<div class='1x6 ignore'>
-			<h5 class='muted'>Grid</h5>
-			<h1>A brand new system.</h1>
+	<div class='grid 2x1 p-4 100dvh' data-debug>
+		<div class='1x1 ignore'>
+			<h5 class='muted mb-2'>Grid</h5>
+			<h1>A brand-new system.</h1>
 		</div>
-		<div class='1x2'></div>
-		<div class='1x2'></div>
-		<div class='1x2'></div>
+		<div class='1x1 grid 1x3 ignore' data-debug>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+
+	<div class='grid 2x1 p-4 100dvh' data-debug>
+		<div class='1x1 ignore'>
+			<h5 class='muted mb-2'>Grid</h5>
+			<h1>The same paradigm.</h1>
+		</div>
+		<div class='1x1 grid 3x12 ignore' data-debug>
+			<div class='1x12 lg:3x2'></div>
+			<div class='1x12 lg:3x4'></div>
+			<div class='1x12 lg:3x6'></div>
+		</div>
 	</div>
 	
-	<div class='grid 8x8 p-4 100dvh' data-debug>
-		<div class='4x8 ignore'>
-			<h5 class='muted'>Grid</h5>
-			<h1>Immersive flexibility.</h1>
+	<div class='grid 2x1 p-4 100dvh'>
+		<div class='1x1 ignore'>
+			<h5 class='muted mb-2'>Grid</h5>
+			<h1>But fine-grained control.</h1>
 		</div>
-		<div class='1x4 lg:1x3'></div>
-		<div class='1x4 lg:2x4 lg:@5,5'></div>
-		<div class='1x8 lg:1x2'></div>
-		<div class='1x8 lg:1x5 lg:@7,2'></div>
-		<div class='1x8 lg:1x6 lg:@8,3'></div>
+		<div class='1x1 grid 5x4 ignore' data-debug>
+			<div class='2x2 lg:2x1 lg:@2,3'></div>
+			<div class='2x2 lg:1x2 lg:@4,2'></div>
+			<div class='3x2 lg:1x1 lg:@5,3'></div>
+			<div class='3x1 lg:3x1 lg:@3,4'></div>
+			<div class='lg:1x2 lg:@3,1'></div>
+			<div class='lg:1x2 lg:@3,1'></div>
+			<div class='lg:2x2 lg:@1,1'></div>
+		</div>
 	</div>
 </div>
 
@@ -169,5 +200,9 @@
 			user-select: none;
 			-webkit-user-select: none;
 		}
+	}
+
+	h5 + h1 {
+		margin-top: .5rem;
 	}
 </style>
