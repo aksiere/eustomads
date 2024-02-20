@@ -75,7 +75,7 @@
 	}
 </script>
 
-<svelte:window {onwheel} onresize={update} onscroll={update} />
+<svelte:window {onwheel} onresize={update} />
 
 <div class='debug' class:hidden={!debug}>
 	innerHeight: {innerHeight}<br>
