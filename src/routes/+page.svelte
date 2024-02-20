@@ -82,47 +82,53 @@
 		</div>
 	</div>
 
-	<div class='grid 2x1 p-4 100dvh' data-debug>
+	<div class='grid 2x1 p-4 100dvh'>
 		<div class='1/1 ignore'>
 			<h5 class='muted mb-2'>Flex</h5>
 			<h1>Familiar system.</h1>
 		</div>
-		<div class='1x1 flex ignore' data-debug>
-			<div></div>
-			<div></div>
+		<div class='1x1 ignore'>
+			<div class='flex 100h ignore' data-debug>
+				<div></div>
+				<div></div>
+			</div>
 		</div>
 	</div>
 
-	<div class='grid 2x1 p-4 100dvh' data-debug>
+	<div class='grid 2x1 p-4 100dvh'>
 		<div class='1/1 ignore'>
 			<h5 class='muted mb-2'>Flex</h5>
 			<h1>Intuitive syntax.</h1>
 		</div>
-		<div class='1x1 flex ignore' data-debug>
-			<div class='1/1 lg:2/12'></div>
-			<div class='1/1 lg:1/3'></div>
-			<div class='1/1 lg:4/8'></div>
+		<div class='1x1 ignore'>
+			<div class='flex 100h ignore' data-debug>
+				<div class='1/1 lg:2/12'></div>
+				<div class='1/1 lg:1/3'></div>
+				<div class='1/1 lg:4/8'></div>
+			</div>
 		</div>
 	</div>
 
-	<div class='grid 2x1 p-4 100dvh' data-debug>
+	<div class='grid 2x1 p-4 100dvh'>
 		<div class='1/1 ignore'>
 			<h5 class='muted mb-2'>Flex</h5>
 			<h1>Sufficient customization.</h1>
 		</div>
-		<div class='1x1 flex ignore' data-debug>
-			<div class='1/4 md:1/6 xl:1/12'></div>
-			<div class='1/4 md:1/6 xl:1/12'></div>
-			<div class='1/4 md:1/6 xl:1/12'></div>
-			<div class='1/4 md:1/6 xl:1/12'></div>
-			<div class='1/4 md:1/6 xl:1/12'></div>
-			<div class='1/4 md:1/6 xl:1/12'></div>
-			<div class='1/4 md:1/6 xl:1/12'></div>
-			<div class='1/4 md:1/6 xl:1/12'></div>
-			<div class='1/4 md:1/6 xl:1/12'></div>
-			<div class='1/4 md:1/6 xl:1/12'></div>
-			<div class='1/4 md:1/6 xl:1/12'></div>
-			<div class='1/4 md:1/6 xl:1/12'></div>
+		<div class='1x1 flex ignore'>
+			<div class='flex 100h ignore' data-debug>
+				<div class='1/4 md:1/6 xl:1/12'></div>
+				<div class='1/4 md:1/6 xl:1/12'></div>
+				<div class='1/4 md:1/6 xl:1/12'></div>
+				<div class='1/4 md:1/6 xl:1/12'></div>
+				<div class='1/4 md:1/6 xl:1/12'></div>
+				<div class='1/4 md:1/6 xl:1/12'></div>
+				<div class='1/4 md:1/6 xl:1/12'></div>
+				<div class='1/4 md:1/6 xl:1/12'></div>
+				<div class='1/4 md:1/6 xl:1/12'></div>
+				<div class='1/4 md:1/6 xl:1/12'></div>
+				<div class='1/4 md:1/6 xl:1/12'></div>
+				<div class='1/4 md:1/6 xl:1/12'></div>
+			</div>
 		</div>
 	</div>
 	
@@ -133,27 +139,31 @@
 		</div>
 	</div>
 	
-	<div class='grid 2x1 p-4 100dvh' data-debug>
+	<div class='grid 2x1 p-4 100dvh'>
 		<div class='1x1 ignore'>
 			<h5 class='muted mb-2'>Grid</h5>
 			<h1>A brand-new system.</h1>
 		</div>
-		<div class='1x1 grid 1x3 ignore' data-debug>
-			<div></div>
-			<div></div>
-			<div></div>
+		<div class='1x1 100h ignore'>
+			<div class='grid 1x3 100h ignore' data-debug>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
 		</div>
 	</div>
 
-	<div class='grid 2x1 p-4 100dvh' data-debug>
+	<div class='grid 2x1 p-4 100dvh'>
 		<div class='1x1 ignore'>
 			<h5 class='muted mb-2'>Grid</h5>
 			<h1>The same paradigm.</h1>
 		</div>
-		<div class='1x1 grid 3x12 ignore' data-debug>
-			<div class='1x12 lg:3x2'></div>
-			<div class='1x12 lg:3x4'></div>
-			<div class='1x12 lg:3x6'></div>
+		<div class='1x1 ignore 100h'>
+			<div class='grid 3x12 100h ignore' data-debug>
+				<div class='1x12 lg:3x2'></div>
+				<div class='1x12 lg:3x4'></div>
+				<div class='1x12 lg:3x6'></div>
+			</div>
 		</div>
 	</div>
 	
@@ -162,14 +172,16 @@
 			<h5 class='muted mb-2'>Grid</h5>
 			<h1>But fine-grained control.</h1>
 		</div>
-		<div class='1x1 grid 5x4 ignore' data-debug>
-			<div class='2x2 lg:2x1 lg:@2,3'></div>
-			<div class='2x2 lg:1x2 lg:@4,2'></div>
-			<div class='3x2 lg:1x1 lg:@5,3'></div>
-			<div class='3x1 lg:3x1 lg:@3,4'></div>
-			<div class='lg:1x2 lg:@3,1'></div>
-			<div class='lg:1x2 lg:@3,1'></div>
-			<div class='lg:2x2 lg:@1,1'></div>
+		<div class='1x1 100h ignore'>
+			<div class='grid 5x4 100h ignore' data-debug>
+				<div class='2x2 lg:2x1 lg:@2,3'></div>
+				<div class='2x2 lg:1x2 lg:@4,2'></div>
+				<div class='3x2 lg:1x1 lg:@5,3'></div>
+				<div class='3x1 lg:3x1 lg:@3,4'></div>
+				<div class='lg:1x2 lg:@3,1'></div>
+				<div class='lg:1x2 lg:@3,1'></div>
+				<div class='lg:2x2 lg:@1,1'></div>
+			</div>
 		</div>
 	</div>
 </div>
@@ -186,6 +198,10 @@
 		&.hidden {
 			display: none;
 		}
+	}
+
+	h1 {
+		word-break: break-word;
 	}
 
 	:is(.flex, .grid) {
