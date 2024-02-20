@@ -31,7 +31,7 @@
 	let isScrolling = $state(false)
 
 	const onwheel = (event) => handler(event.deltaY > 0)
-	const onswipe = (event) => handler(event.detail.direction === 'top', true)
+	const onswipe = (event) => handler(event.detail.direction === 'top')
 
 	const onscrollend = () => {
 		if (debug) console.log('isScrolling: false')
