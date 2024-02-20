@@ -27,8 +27,17 @@
 
 	let isScrolling = $state(false)
 
-	const onwheel = (event) => handler(event.deltaY > 0)
-	const onswipe = (event) => handler(event.detail.direction === 'top')
+	const onwheel = (event) => {
+		if (!isScrolling) {
+			handler(event.deltaY > 0)
+		}
+	}
+
+	const onswipe = (event) => {
+		if (!isScrolling) {
+			handler(event.detail.direction === 'top')
+		}
+	}
 
 	const onscrollend = () => {
 		if (debug) console.log('isScrolling: false')
@@ -72,7 +81,7 @@
 	}
 </script>
 
-<svelte:window {onwheel} onresize={update} onscroll={update} />
+<svelte:window {onwheel} onresize={update} />
 
 <div class='debug' class:hidden={!debug}>
 	innerHeight: {innerHeight}<br>
