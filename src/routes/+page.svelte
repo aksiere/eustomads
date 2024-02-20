@@ -13,8 +13,8 @@
 
 	onMount(() => {
 		window.addEventListener('wheel', e => e.preventDefault(), { passive: false })
-		window.addEventListener('touchmove', e => e.preventDefault(), { passive: false })
-		window.addEventListener('pointermove', e => e.preventDefault(), { passive: false })
+		// window.addEventListener('touchmove', e => e.preventDefault(), { passive: false })
+		// window.addEventListener('pointermove', e => e.preventDefault(), { passive: false })
 		update()
 	})
 
