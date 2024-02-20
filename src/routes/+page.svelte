@@ -65,77 +65,79 @@
 	isScrolling: {isScrolling}
 </div>
 
-<div class='flex p-4 100dvh' use:swipe={swipeOptions} {onswipe}>
-	<div class='1/1 md:2/5 ignore'>
-		<h1 class='weight-600'>Eustoma</h1>
-		<h4 class='muted weight-500'>Lightweight flexible grid system</h4>
+<div use:swipe={swipeOptions} {onswipe}>
+	<div class='flex p-4 100dvh'>
+		<div class='1/1 md:2/5 ignore'>
+			<h1 class='weight-600'>Eustoma</h1>
+			<h4 class='muted weight-500'>Lightweight flexible grid system</h4>
+		</div>
+		<div class='1/1 md:3/5'></div>
 	</div>
-	<div class='1/1 md:3/5'></div>
-</div>
-
-<div class='flex p-4 100dvh' use:swipe={swipeOptions} {onswipe}>
-	<div class='1/1 ignore d-flex column'>
-		<h1><span class='muted'>01</span> Flex</h1>
-		<h6 class='muted mt-a'>Eustoma Design System</h6>
+	
+	<div class='flex p-4 100dvh'>
+		<div class='1/1 ignore d-flex column'>
+			<h1><span class='muted'>01</span> Flex</h1>
+			<h6 class='muted mt-a'>Eustoma Design System</h6>
+		</div>
 	</div>
-</div>
-
-<div class='flex p-4 100dvh' use:swipe={swipeOptions} {onswipe}>
-	<div class='1/1 ignore'>
-		<h5 class='muted'>Flex</h5>
-		<h1>Familiar system.</h1>
+	
+	<div class='flex p-4 100dvh'>
+		<div class='1/1 ignore'>
+			<h5 class='muted'>Flex</h5>
+			<h1>Familiar system.</h1>
+		</div>
+		<div class='1/4 md:1/6 xl:1/12'></div>
+		<div class='1/4 md:1/6 xl:1/12'></div>
+		<div class='1/4 md:1/6 xl:1/12'></div>
+		<div class='1/4 md:1/6 xl:1/12'></div>
+		<div class='1/4 md:1/6 xl:1/12'></div>
+		<div class='1/4 md:1/6 xl:1/12'></div>
+		<div class='1/4 md:1/6 xl:1/12'></div>
+		<div class='1/4 md:1/6 xl:1/12'></div>
+		<div class='1/4 md:1/6 xl:1/12'></div>
+		<div class='1/4 md:1/6 xl:1/12'></div>
+		<div class='1/4 md:1/6 xl:1/12'></div>
+		<div class='1/4 md:1/6 xl:1/12'></div>
 	</div>
-	<div class='1/4 md:1/6 xl:1/12'></div>
-	<div class='1/4 md:1/6 xl:1/12'></div>
-	<div class='1/4 md:1/6 xl:1/12'></div>
-	<div class='1/4 md:1/6 xl:1/12'></div>
-	<div class='1/4 md:1/6 xl:1/12'></div>
-	<div class='1/4 md:1/6 xl:1/12'></div>
-	<div class='1/4 md:1/6 xl:1/12'></div>
-	<div class='1/4 md:1/6 xl:1/12'></div>
-	<div class='1/4 md:1/6 xl:1/12'></div>
-	<div class='1/4 md:1/6 xl:1/12'></div>
-	<div class='1/4 md:1/6 xl:1/12'></div>
-	<div class='1/4 md:1/6 xl:1/12'></div>
-</div>
-
-<div class='flex p-4 100dvh' use:swipe={swipeOptions} {onswipe} data-debug>
-	<div class='1/1 ignore'>
-		<h5 class='muted'>Flex</h5>
-		<h1>Intuitive syntax.</h1>
+	
+	<div class='flex p-4 100dvh' data-debug>
+		<div class='1/1 ignore'>
+			<h5 class='muted'>Flex</h5>
+			<h1>Intuitive syntax.</h1>
+		</div>
+		<div class='1/1 lg:2/12'></div>
+		<div class='1/1 lg:1/3'></div>
+		<div class='1/1 lg:4/8'></div>
 	</div>
-	<div class='1/1 lg:2/12'></div>
-	<div class='1/1 lg:1/3'></div>
-	<div class='1/1 lg:4/8'></div>
-</div>
-
-<div class='flex p-4 100dvh' use:swipe={swipeOptions} {onswipe}>
-	<div class='1/1 ignore d-flex column'>
-		<h1><span class='muted'>02</span> Grid</h1>
-		<h6 class='muted mt-a'>Eustoma Design System</h6>
+	
+	<div class='flex p-4 100dvh'>
+		<div class='1/1 ignore d-flex column'>
+			<h1><span class='muted'>02</span> Grid</h1>
+			<h6 class='muted mt-a'>Eustoma Design System</h6>
+		</div>
 	</div>
-</div>
-
-<div class='grid 2x6 p-4 100dvh' use:swipe={swipeOptions} {onswipe} data-debug>
-	<div class='1x6 ignore'>
-		<h5 class='muted'>Grid</h5>
-		<h1>A brand new system.</h1>
+	
+	<div class='grid 2x6 p-4 100dvh' data-debug>
+		<div class='1x6 ignore'>
+			<h5 class='muted'>Grid</h5>
+			<h1>A brand new system.</h1>
+		</div>
+		<div class='1x2'></div>
+		<div class='1x2'></div>
+		<div class='1x2'></div>
 	</div>
-	<div class='1x2'></div>
-	<div class='1x2'></div>
-	<div class='1x2'></div>
-</div>
-
-<div class='grid 8x8 p-4 100dvh' use:swipe={swipeOptions} {onswipe} data-debug>
-	<div class='4x8 ignore'>
-		<h5 class='muted'>Grid</h5>
-		<h1>Immersive flexibility.</h1>
+	
+	<div class='grid 8x8 p-4 100dvh' data-debug>
+		<div class='4x8 ignore'>
+			<h5 class='muted'>Grid</h5>
+			<h1>Immersive flexibility.</h1>
+		</div>
+		<div class='1x4 lg:1x3'></div>
+		<div class='1x4 lg:2x4 lg:@5,5'></div>
+		<div class='1x8 lg:1x2'></div>
+		<div class='1x8 lg:1x5 lg:@7,2'></div>
+		<div class='1x8 lg:1x6 lg:@8,3'></div>
 	</div>
-	<div class='1x4 lg:1x3'></div>
-	<div class='1x4 lg:2x4 lg:@5,5'></div>
-	<div class='1x8 lg:1x2'></div>
-	<div class='1x8 lg:1x5 lg:@7,2'></div>
-	<div class='1x8 lg:1x6 lg:@8,3'></div>
 </div>
 
 <style>
