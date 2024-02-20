@@ -44,7 +44,7 @@
 
 		if (!isScrolling) {
 			if (debug) console.log('isScrolling: true')
-			isScrolling = true
+			// isScrolling = true
 
 			scrollTo({
 				top: ((currentPage - 1) + 1 * modifier) * innerHeight, 
