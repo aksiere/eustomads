@@ -2,7 +2,7 @@
 	import { swipe } from 'svelte-gestures'
 	import { onMount } from 'svelte'
 
-	let debug = $state.frozen(true)
+	let debug = $state.frozen(false)
 	let swipeOptions = $state.frozen({ timeframe: 300, minSwipeDistance: 100, touchAction: 'pan-y' })
 	
 	let innerHeight = $state(0)
