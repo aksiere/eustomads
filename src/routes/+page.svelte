@@ -68,9 +68,9 @@
 
 <div use:swipe={swipeOptions} {onswipe}>
 	<div class='flex p-4 100dvh'>
-		<div class='1/1 md:2/5 ignore'>
+		<div class='1/1 md:2/5 ignore d-flex column'>
 			<h1>Eustoma</h1>
-			<h4 class='muted mt-3'>Lightweight flexible grid system</h4>
+			<h5 class='muted mt-2'>Lightweight & Flexible Grid System</h5>
 		</div>
 		<div class='1/1 md:3/5'></div>
 	</div>
