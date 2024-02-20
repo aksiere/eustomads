@@ -2,7 +2,7 @@
 	import { swipe } from 'svelte-gestures'
 	import { onMount } from 'svelte'
 
-	let debug = $state.frozen(false)
+	let debug = $state.frozen(true)
 	let swipeOptions = $state.frozen({ timeframe: 300, minSwipeDistance: 100, touchAction: 'pan-y' })
 	
 	let innerHeight = $state(0)
@@ -13,8 +13,8 @@
 
 	onMount(() => {
 		window.addEventListener('wheel', e => e.preventDefault(), { passive: false })
-		// window.addEventListener('touchmove', e => e.preventDefault(), { passive: false })
-		// window.addEventListener('pointermove', e => e.preventDefault(), { passive: false })
+		window.addEventListener('pointermove', e => e.preventDefault(), { passive: false })
+		window.addEventListener('touchmove', e => e.preventDefault(), { passive: false })
 		update()
 	})
 
@@ -61,7 +61,8 @@
 	scrollY: {scrollY}<br>
 	scrollHeight: {scrollHeight}<br>
 	maxPage: {Math.round(scrollHeight / innerHeight)}<br>
-	currentPage: {Math.round(scrollY / innerHeight) + 1}
+	currentPage: {Math.round(scrollY / innerHeight) + 1}<br>
+	isScrolling: {isScrolling}
 </div>
 
 <div class='flex p-4 100dvh' use:swipe={swipeOptions} {onswipe}>
