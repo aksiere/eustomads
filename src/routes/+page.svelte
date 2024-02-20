@@ -75,7 +75,7 @@
 	}
 </script>
 
-<svelte:window {onwheel} onresize={update} {onscrollend} />
+<svelte:window {onwheel} onresize={update} {onscrollend} onpointerup={() => isScrolling = false} />
 
 <div class='debug' class:hidden={!debug}>
 	innerHeight: {innerHeight}<br>
