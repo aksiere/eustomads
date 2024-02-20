@@ -32,6 +32,13 @@
 	const onwheel = (event) => handler(event.deltaY > 0)
 	const onswipe = (event) => handler(event.detail.direction === 'top')
 
+	const onscroll = () => {
+		console.log(/iP(hone|od|ad)/.test(getUAString()))
+		if (/iP(hone|od|ad)/.test(getUAString())) {
+			isScrolling = false
+		}
+	}
+
 	const onscrollend = () => {
 		if (debug) console.log('isScrolling: false')
 		isScrolling = false
@@ -72,9 +79,17 @@
 			behavior: 'smooth'
 		})
 	}
+
+	function getUAString() {
+		let uaData = navigator.userAgentData
+		if (null !== uaData && uaData.brands) {
+			return uaData.brands.map(item => item.brand + '/' + item.version).join(' ')
+		}
+		return navigator.userAgent
+	}
 </script>
 
-<svelte:window {onwheel} onresize={update} {onscrollend} />
+<svelte:window {onwheel} onresize={update} {onscrollend} {onscroll} />
 
 <div class='debug' class:hidden={!debug}>
 	innerHeight: {innerHeight}<br>
