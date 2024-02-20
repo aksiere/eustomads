@@ -57,7 +57,7 @@
 	}
 </script>
 
-<svelte:window {onwheel} onresize={update} {onscrollend} />
+<svelte:window {onwheel} onresize={update} onscrollendcapture={update} {onscrollend} />
 
 <div class='debug' class:hidden={!debug}>
 	innerHeight: {innerHeight}<br>

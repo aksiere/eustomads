@@ -8,13 +8,13 @@
 :root {
 	--background: #060606;
 	--color: #ffffff;
-	--accent: #93989d;
+	--accent: #aeb3b7;
 }
 
 [data-theme='light'] {
-	--background: #fdfbf9;
+	--background: #FFF7F1;
 	--color: #000000;
-	--accent: #f0ecd8;
+	--accent: #FFE4C9;
 }
 
 *, *::before, *::after {
