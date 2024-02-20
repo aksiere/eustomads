@@ -1,29 +1,9 @@
 <script>
+	import { swipe } from 'svelte-gestures'
 	import { onMount } from 'svelte'
 
-	const debug = false
-
-	// const onwheel = (event) => {
-	// 	const modifier = event.deltaY > 0 ? 1 : -1
-
-	// 	// prevent scroll to top when is already at top
-	// 	if (modifier === -1 && window.scrollY === 0) return
-	// 	// prevent scroll to bottom when is already at bottom 
-	// 	if (modifier === 1 && Math.ceil(window.scrollY) === document.body.scrollHeight - window.innerHeight) return
-
-	// 	if (!isScrolling) {
-	// 		isScrolling = true
-	// 		console.log('set true')
-
-	// 		const offsetAfterResize = document.body.scrollHeight % window.scrollY ? document.body.scrollHeight % window.scrollY - window.innerHeight * -1 * modifier : 0
-	// 		console.log(offsetAfterResize)
-
-	// 		scrollTo({
-	// 			top: window.scrollY + window.innerHeight * modifier, 
-	// 			behavior: 'smooth'
-	// 		})
-	// 	}
-	// }
+	let debug = $state.frozen(false)
+	let swipeOptions = $state.frozen({ timeframe: 300, minSwipeDistance: 100, touchAction: 'pan-y' })
 	
 	let innerHeight = $state(0)
 	let scrollY = $state(0)
@@ -33,6 +13,8 @@
 
 	onMount(() => {
 		window.addEventListener('wheel', e => e.preventDefault(), { passive: false })
+		window.addEventListener('touchmove', e => e.preventDefault(), { passive: false })
+		window.addEventListener('pointermove', e => e.preventDefault(), { passive: false })
 		update()
 	})
 
@@ -45,8 +27,17 @@
 
 	let isScrolling = $state(false)
 
-	const onwheel = (event) => {
-		const modifier = event.deltaY > 0 ? 1 : -1
+	const onwheel = (event) => handler(event.deltaY > 0)
+	const onswipe = (event) => handler(event.detail.direction === 'top')
+
+	const onscrollend = () => {
+		if (debug) console.log('isScrolling: false')
+		isScrolling = false
+		update()
+	}
+
+	const handler = (modifierCondition) => {
+		const modifier = modifierCondition ? 1 : -1
 
 		if (modifier === -1 && window.scrollY === 0) return
 		if (modifier === 1 && currentPage === maxPage) return
@@ -61,12 +52,6 @@
 			})
 		}
 	}
-
-	const onscrollend = () => {
-		if (debug) console.log('isScrolling: false')
-		isScrolling = false
-		update()
-	}
 </script>
 
 <svelte:window {onwheel} {onscrollend} onresize={update} />
@@ -79,7 +64,7 @@
 	currentPage: {Math.round(scrollY / innerHeight) + 1}
 </div>
 
-<div class='flex p-4 100dvh'>
+<div class='flex p-4 100dvh' use:swipe={swipeOptions} {onswipe}>
 	<div class='1/1 md:2/5 ignore'>
 		<h1 class='weight-600'>Eustoma</h1>
 		<h4 class='muted weight-500'>Lightweight flexible grid system</h4>
@@ -87,14 +72,14 @@
 	<div class='1/1 md:3/5'></div>
 </div>
 
-<div class='flex p-4 100dvh'>
+<div class='flex p-4 100dvh' use:swipe={swipeOptions} {onswipe}>
 	<div class='1/1 ignore d-flex column'>
 		<h1><span class='muted'>01</span> Flex</h1>
 		<h6 class='muted mt-a'>Eustoma Design System</h6>
 	</div>
 </div>
 
-<div class='flex p-4 100dvh'>
+<div class='flex p-4 100dvh' use:swipe={swipeOptions} {onswipe}>
 	<div class='1/1 ignore'>
 		<h5 class='muted'>Flex</h5>
 		<h1>Familiar system.</h1>
@@ -113,7 +98,7 @@
 	<div class='1/4 md:1/6 xl:1/12'></div>
 </div>
 
-<div class='flex p-4 100dvh' data-debug>
+<div class='flex p-4 100dvh' use:swipe={swipeOptions} {onswipe} data-debug>
 	<div class='1/1 ignore'>
 		<h5 class='muted'>Flex</h5>
 		<h1>Intuitive syntax.</h1>
@@ -123,14 +108,14 @@
 	<div class='1/1 lg:4/8'></div>
 </div>
 
-<div class='flex p-4 100dvh'>
+<div class='flex p-4 100dvh' use:swipe={swipeOptions} {onswipe}>
 	<div class='1/1 ignore d-flex column'>
 		<h1><span class='muted'>02</span> Grid</h1>
 		<h6 class='muted mt-a'>Eustoma Design System</h6>
 	</div>
 </div>
 
-<div class='grid 2x6 p-4 100dvh' data-debug>
+<div class='grid 2x6 p-4 100dvh' use:swipe={swipeOptions} {onswipe} data-debug>
 	<div class='1x6 ignore'>
 		<h5 class='muted'>Grid</h5>
 		<h1>A brand new system.</h1>
@@ -140,7 +125,7 @@
 	<div class='1x2'></div>
 </div>
 
-<div class='grid 8x8 p-4 100dvh' data-debug>
+<div class='grid 8x8 p-4 100dvh' use:swipe={swipeOptions} {onswipe} data-debug>
 	<div class='4x8 ignore'>
 		<h5 class='muted'>Grid</h5>
 		<h1>Immersive flexibility.</h1>
