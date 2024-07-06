@@ -69,7 +69,7 @@
 <div use:swipe={swipeOptions} {onswipe}>
 	<div class='flex p-4 100dvh'>
 		<div class='1/1 md:2/5 ignore d-flex column'>
-			<h1>Eustoma</h1>
+			<h1>Paeonia</h1>
 			<h5 class='muted mt-2'>Lightweight & Flexible Grid System</h5>
 		</div>
 		<div class='1/1 md:3/5'></div>
@@ -78,7 +78,7 @@
 	<div class='flex p-4 100dvh'>
 		<div class='1/1 ignore d-flex column'>
 			<h1><span class='muted'>01</span> Flex</h1>
-			<h6 class='muted mt-a'>Eustoma Design System</h6>
+			<h6 class='muted mt-a'>Paeonia Design System</h6>
 		</div>
 	</div>
 
@@ -135,7 +135,7 @@
 	<div class='flex p-4 100dvh'>
 		<div class='1/1 ignore d-flex column'>
 			<h1><span class='muted'>02</span> Grid</h1>
-			<h6 class='muted mt-a'>Eustoma Design System</h6>
+			<h6 class='muted mt-a'>Paeonia Design System</h6>
 		</div>
 	</div>
 	
